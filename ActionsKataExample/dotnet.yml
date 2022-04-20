@@ -1,0 +1,21 @@
+name: welcome
+on: 
+  push:
+    branches:
+      - 'main'
+      - 'new-branch'
+jobs:
+  welcome:
+    name: Welcome
+    steps:
+      - run: echo Welcome
+
+  build:
+    name: build
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/dotnet@v2
+      with: 
+      dotnet-version: '6.0.x'
+    - run: dotnet build
+
