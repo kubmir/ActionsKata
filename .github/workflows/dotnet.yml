@@ -1,0 +1,13 @@
+  name: myCLI
+  
+  on: 
+    push:
+      branches:
+        - 'main'
+  jobs:
+    welcome:
+      runs-on: ubuntu-20.04
+      
+      steps:
+        - name: MSG
+          run: echo "..."
