@@ -2,8 +2,8 @@ name: welcome
 on: 
   push:
     branches:
-      - main
-      - ne-branch
+      - 'main'
+      - 'new-branch'
 jobs:
   welcome:
     name: Welcome
