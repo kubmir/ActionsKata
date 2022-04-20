@@ -1,20 +1,20 @@
 name: welcome
 on: 
-	pull_request:
-		- main
-		- new-branch
+  pull_request:
+    - main
+    - new-branch
 jobs:
-	welcome:
-		name: Welcome
-		steps:
-			- run: echo Welcome
+  welcome:
+    name: Welcome
+    steps:
+      - run: echo Welcome
 
-	build:
-		name: build
-		steps:
-		- uses: actions/checkout@v3
-		- uses: actions/dotnet@v2
-		  with: 
-			dotnet-version: '6.0.x'
-		- run: dotnet build
+  build:
+    name: build
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/dotnet@v2
+      with: 
+      dotnet-version: '6.0.x'
+    - run: dotnet build
 
