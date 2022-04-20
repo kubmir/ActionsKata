@@ -4,6 +4,7 @@
     push:
       branches:
         - 'main'
+        - 'pokus'
   jobs:
     welcome:
       runs-on: ubuntu-20.04
