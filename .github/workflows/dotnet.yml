@@ -19,8 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: hello
     steps:
-      - uses: actions/checkout@v3
       - name: Setup .NET
+      - uses: actions/checkout@v3
       - uses: actions/setup-dotnet@v2
         with:
         dotnet-version: "6.x"
@@ -33,8 +33,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [hello, build]
     steps:
-      - uses: actions/checkout@v3
       - name: Setup .NET
+      - uses: actions/checkout@v3
       - uses: actions/setup-dotnet@v2
         with:
         dotnet-version: "6.x"
@@ -45,8 +45,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [hello, build, test]
     steps:
-      - uses: actions/checkout@v3
       - name: Setup .NET
+      - uses: actions/checkout@v3
       - uses: actions/setup-dotnet@v2
         with:
         dotnet-version: "6.x"
