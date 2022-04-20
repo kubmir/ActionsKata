@@ -22,3 +22,6 @@
           
         - name: Test
           run: dotnet test ActionsKata
+
+
+
