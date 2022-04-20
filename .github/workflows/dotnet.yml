@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Print Hello
-        run: echo "Welcome message goes here."
+      - run: echo "Welcome message goes here."
 
   build:
     runs-on: ubuntu-latest
@@ -25,9 +25,9 @@ jobs:
         with:
             dotnet-version: 6.0.x
       - name: Install dependencies
-        run: dotnet restore
+      - run: dotnet restore
       - name: Build
-        run: dotnet build
+      - run: dotnet build
 
   test:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
         with:
             dotnet-version: 6.0.x
       - name: Run tests
-        run: dotnet test
+      - run: dotnet test
 
   publish:
     runs-on: ubuntu-latest
@@ -51,4 +51,4 @@ jobs:
         with:
             dotnet-version: 6.0.x
       - name: Publish
-        run: dotnet publish
+      - run: dotnet publish
