@@ -1,5 +1,5 @@
 name: test-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: ${{ github.actor }} is trying to write his first Action
 on: 
   push:
   pull_request:
@@ -7,19 +7,19 @@ on:
       - main
 jobs:
   print-hello:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - run: ::debug::Hello World
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - run: dotnet restore
       - run: dotnet build
   test: 
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - run: dotnet test
   publish: 
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - run: dotnet publish
