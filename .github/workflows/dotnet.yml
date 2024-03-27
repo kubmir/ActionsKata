@@ -8,6 +8,11 @@ on:
     branches: [ "main" ]
 
 jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "Welcome to the .NET world!"
+
   build:
 
     runs-on: ubuntu-latest
@@ -22,5 +27,7 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+  
+  test:
     - name: Test
       run: dotnet test --no-build --verbosity normal
