@@ -7,16 +7,19 @@ jobs:
       - run: echo "Hello"
 
   build:
+    needs: welcome
     runs-on: ubuntu-latest
     steps:
       - run: echo "Build"
 
   test:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - run: echo "Test"
 
   publish:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - run: echo "Publish"
