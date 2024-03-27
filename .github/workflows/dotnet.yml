@@ -1,0 +1,48 @@
+name: 'Dotnet Workflow'
+on: 
+  pull_request:
+    types: [opened, reopened, push]
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello"
+
+  build:
+    needs: welcome
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Build"    
+      - name: Setup .NET 8.x
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.x'
+      - name: Display dotnet version
+        run: dotnet --version
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build
+        working-directory: ActionsKataExample
+        run: dotnet build
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Test"
+      - name: Setup .NET 8.x
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.x'
+      - name: Display dotnet version
+        run: dotnet --version
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Test
+        run: dotnet test
+
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Publish"
