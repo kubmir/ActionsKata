@@ -5,3 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello"
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Build"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Test"
+
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Publish"
