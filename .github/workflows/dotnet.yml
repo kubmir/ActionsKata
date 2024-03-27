@@ -1,0 +1,67 @@
+name: .NET Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Welcome message
+        run: echo "Welcome to the CI pipeline for the .NET project!"
+
+  build:
+    needs: welcome
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x' # Specify your .NET version
+
+      - name: Build
+        run: dotnet build --configuration Release
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x' # Specify your .NET version
+
+      - name: Test
+        run: dotnet test
+
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x' # Specify your .NET version
+
+      - name: Publish
+        run: dotnet publish --configuration Release --output ./publish
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: published-app
+          path: ./publish
