@@ -1,4 +1,5 @@
 name: kata
+run-name: ${{ github.actor }} 
 on:
   pull_request:
     branches: [ "main" ]
@@ -19,8 +20,12 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build
-    - name: Test with the dotnet CLI
+      run: dotnet build 
+  tests:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Test
       run: dotnet test
      
 
