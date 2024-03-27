@@ -1,5 +1,7 @@
 name: 'Dotnet Workflow'
-on: [push]
+on: 
+  pull_request:
+    types: [opened, reopened]
 jobs:
   welcome:
     runs-on: ubuntu-latest
