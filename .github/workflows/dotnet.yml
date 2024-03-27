@@ -1,14 +1,17 @@
 name: welcome
 run-name: ${{ github.actor }} 
-on: [pull_request]
+on:
+  pull_request:
+    branches: [ "main" ]
 jobs:
-  Explore-GitHub-Actions:
+  welcome:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Welcome to github actions"
-  Build:
-    runs-on: ubuntu-latest
 
+  build:
+    needs: welcome
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - name: Setup dotnet
