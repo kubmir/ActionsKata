@@ -19,7 +19,8 @@ jobs:
       - name: Display dotnet version
         run: dotnet --version
       - name: Build
-        run: dotnet build ActionsKataExample
+        working-directory: ./ActionsKataExample
+        run: dotnet build
 
   test:
     needs: build
