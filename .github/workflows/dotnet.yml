@@ -1,5 +1,4 @@
 name: kata
-run-name: ${{ github.actor }} 
 on:
   pull_request:
     branches: [ "main" ]
